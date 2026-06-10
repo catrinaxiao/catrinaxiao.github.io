@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xiao (Catrina) Wen — Investment Research · AI & Organizations</title>
+<meta name="description" content="Xiao (Catrina) Wen — investment researcher and aspiring scholar working where AI meets organizations and capital markets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFBF8;
+    --ink:#1C2433;
+    --slate:#5A6472;
+    --jade:#1F7A5C;
+    --jade-soft:#E7F1EC;
+    --mist:#E6E8E1;
+    --hairline:#D8DBD2;
+    --display:"Newsreader", Georgia, serif;
+    --body:"Public Sans", -apple-system, "Segoe UI", sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, monospace;
+    --cjk:"Noto Serif SC", serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation:none!important;transition:none!important;}
+  }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--jade);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s;}
+  a:hover,a:focus-visible{border-bottom-color:var(--jade);}
+  a:focus-visible{outline:2px solid var(--jade);outline-offset:3px;border-radius:2px;}
+
+  .frame{
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:300px 1fr;
+    min-height:100vh;
+  }
+
+  /* ---------- Sidebar ---------- */
+  .side{
+    border-right:1px solid var(--hairline);
+    padding:56px 36px 40px 32px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  .side .brand{
+    font-family:var(--display);
+    font-size:1.5rem;
+    font-weight:600;
+    letter-spacing:.01em;
+    line-height:1.2;
+  }
+  .side .brand .zh{
+    font-family:var(--cjk);
+    color:var(--slate);
+    font-size:1rem;
+    display:block;
+    margin-top:6px;
+    font-weight:600;
+    letter-spacing:.35em;
+  }
+  .side nav{margin-top:48px;}
+  .side nav a{
+    display:block;
+    font-family:var(--mono);
+    font-size:.78rem;
+    letter-spacing:.06em;
+    color:var(--slate);
+    padding:9px 0;
+    border-bottom:none;
+    transition:color .15s, padding-left .15s;
+  }
+  .side nav a .zh-label{
+    font-family:var(--cjk);
+    margin-left:10px;
+    font-size:.72rem;
+    opacity:.55;
+  }
+  .side nav a:hover, .side nav a:focus-visible{color:var(--jade);padding-left:6px;}
+  .side .foot{
+    margin-top:auto;
+    font-family:var(--mono);
+    font-size:.7rem;
+    color:var(--slate);
+    line-height:1.9;
+  }
+  .side .foot a{color:var(--slate);}
+  .side .foot a:hover{color:var(--jade);}
+
+  /* ---------- Main ---------- */
+  main{padding:0 56px 96px;min-width:0;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 72px;
+    border-bottom:1px solid var(--hairline);
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:1fr 280px;
+    gap:48px;
+    align-items:start;
+  }
+  .hero .text{position:relative;z-index:1;}
+  .hero .portrait{
+    position:relative;
+    z-index:1;
+    margin-top:34px;
+  }
+  .hero .portrait img{
+    display:block;
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    border-radius:4px;
+    box-shadow:0 18px 44px rgba(28,36,51,.18);
+  }
+  .hero .portrait::after{
+    content:"";
+    position:absolute;
+    inset:14px -14px -14px 14px;
+    border:1px solid var(--jade);
+    border-radius:4px;
+    z-index:-1;
+    opacity:.45;
+  }
+  .hero .mark{
+    position:absolute;
+    right:200px;
+    top:-12px;
+    font-family:var(--cjk);
+    font-size:clamp(200px,22vw,300px);
+    line-height:1;
+    color:transparent;
+    -webkit-text-stroke:1.5px var(--mist);
+    user-select:none;
+    pointer-events:none;
+    z-index:0;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.74rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--jade);
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(2.6rem,5.4vw,4rem);
+    line-height:1.06;
+    letter-spacing:-.01em;
+    max-width:14ch;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--jade);
+  }
+  .hero .tagline{
+    margin-top:26px;
+    font-family:var(--display);
+    font-style:italic;
+    font-size:1.25rem;
+    color:var(--slate);
+    max-width:46ch;
+    line-height:1.5;
+  }
+  .hero .intro{
+    margin-top:24px;
+    max-width:62ch;
+    color:var(--ink);
+  }
+  .hero .links{
+    margin-top:34px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .hero .links a{
+    font-family:var(--mono);
+    font-size:.78rem;
+    letter-spacing:.04em;
+    border:1px solid var(--hairline);
+    border-radius:999px;
+    padding:8px 18px;
+    color:var(--ink);
+    transition:border-color .15s, background .15s, color .15s;
+  }
+  .hero .links a:hover, .hero .links a:focus-visible{
+    border-color:var(--jade);
+    background:var(--jade-soft);
+    color:var(--jade);
+  }
+
+  /* ---------- Sections ---------- */
+  section{padding:64px 0 8px;}
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:36px;
+  }
+  .sec-head h2{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:1.7rem;
+    letter-spacing:-.005em;
+  }
+  .sec-head .zh{
+    font-family:var(--cjk);
+    font-size:.95rem;
+    color:var(--slate);
+    letter-spacing:.3em;
+  }
+  .sec-head::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--hairline);
+    transform:translateY(-4px);
+  }
+
+  /* entry rows */
+  .entry{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:28px;
+    padding:22px 0 26px;
+  }
+  .entry + .entry{border-top:1px solid var(--mist);}
+  .entry .when{
+    font-family:var(--mono);
+    font-size:.74rem;
+    color:var(--slate);
+    letter-spacing:.04em;
+    padding-top:5px;
+    line-height:1.8;
+  }
+  .entry .when .loc{display:block;opacity:.7;}
+  .entry h3{
+    font-family:var(--body);
+    font-size:1.05rem;
+    font-weight:600;
+    letter-spacing:-.005em;
+  }
+  .entry .role{
+    font-family:var(--display);
+    font-style:italic;
+    color:var(--jade);
+    font-size:1rem;
+    margin-top:2px;
+  }
+  .entry .sub{
+    color:var(--slate);
+    font-size:.9rem;
+    margin-top:2px;
+  }
+  .entry ul{
+    margin-top:12px;
+    list-style:none;
+  }
+  .entry ul li{
+    position:relative;
+    padding-left:20px;
+    margin-bottom:8px;
+    font-size:.94rem;
+    color:#333B49;
+  }
+  .entry ul li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--jade);
+    font-family:var(--mono);
+  }
+
+  /* research cards */
+  .paper{
+    border:1px solid var(--mist);
+    border-left:3px solid var(--jade);
+    border-radius:4px;
+    padding:22px 26px;
+    margin-bottom:18px;
+    background:#fff;
+  }
+  .paper .status{
+    font-family:var(--mono);
+    font-size:.68rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--jade);
+    background:var(--jade-soft);
+    padding:3px 10px;
+    border-radius:999px;
+    display:inline-block;
+    margin-bottom:12px;
+  }
+  .paper h3{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:1.15rem;
+    line-height:1.4;
+  }
+  .paper .meta{
+    font-size:.86rem;
+    color:var(--slate);
+    margin-top:8px;
+  }
+  .paper p.desc{
+    font-size:.92rem;
+    margin-top:10px;
+    color:#333B49;
+  }
+
+  /* projects */
+  .grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .card{
+    border:1px solid var(--mist);
+    border-radius:4px;
+    padding:22px 24px;
+    background:#fff;
+    transition:border-color .15s, transform .15s;
+  }
+  .card:hover{border-color:var(--jade);transform:translateY(-2px);}
+  .card .tag{
+    font-family:var(--mono);
+    font-size:.66rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:10px;
+  }
+  .card h3{
+    font-family:var(--body);
+    font-weight:600;
+    font-size:1rem;
+  }
+  .card p{
+    font-size:.9rem;
+    color:#333B49;
+    margin-top:8px;
+  }
+
+  /* skills */
+  .skills{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:14px 28px;
+  }
+  .skills dt{
+    font-family:var(--mono);
+    font-size:.74rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--slate);
+    padding-top:3px;
+  }
+  .skills dd{font-size:.94rem;}
+
+  /* honors */
+  .honors{list-style:none;margin-top:4px;}
+  .honors li{
+    display:flex;
+    justify-content:space-between;
+    gap:24px;
+    padding:12px 0;
+    border-bottom:1px solid var(--mist);
+    font-size:.94rem;
+  }
+  .honors li:last-child{border-bottom:none;}
+  .honors .yr{
+    font-family:var(--mono);
+    font-size:.74rem;
+    color:var(--slate);
+    white-space:nowrap;
+    padding-top:3px;
+  }
+
+  footer.colophon{
+    margin-top:72px;
+    padding-top:28px;
+    border-top:1px solid var(--hairline);
+    font-family:var(--mono);
+    font-size:.72rem;
+    color:var(--slate);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- Mobile ---------- */
+  @media (max-width:880px){
+    .frame{grid-template-columns:1fr;}
+    .side{
+      position:static;
+      height:auto;
+      border-right:none;
+      border-bottom:1px solid var(--hairline);
+      padding:28px 24px 20px;
+    }
+    .side nav{
+      margin-top:20px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:2px 18px;
+    }
+    .side nav a{padding:4px 0;}
+    .side nav a .zh-label{display:none;}
+    .side .foot{display:none;}
+    main{padding:0 24px 64px;}
+    .hero{padding:56px 0 48px;grid-template-columns:1fr;gap:32px;}
+    .hero .portrait{margin-top:0;max-width:240px;}
+    .hero .mark{right:-60px;top:-10px;opacity:.7;}
+    .entry{grid-template-columns:1fr;gap:6px;}
+    .entry .when .loc{display:inline;margin-left:10px;}
+    .grid2{grid-template-columns:1fr;}
+    .skills{grid-template-columns:1fr;gap:2px 0;}
+    .skills dd{margin-bottom:12px;}
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="side">
+    <div class="brand">
+      Xiao (Catrina) Wen
+      <span class="zh">肖雯</span>
+    </div>
+    <nav aria-label="Sections">
+      <a href="#about">ABOUT<span class="zh-label">简介</span></a>
+      <a href="#education">EDUCATION<span class="zh-label">教育</span></a>
+      <a href="#experience">EXPERIENCE<span class="zh-label">经历</span></a>
+      <a href="#research">RESEARCH<span class="zh-label">研究</span></a>
+      <a href="#projects">PROJECTS<span class="zh-label">项目</span></a>
+      <a href="#skills">SKILLS &amp; HONORS<span class="zh-label">技能</span></a>
+    </nav>
+    <div class="foot">
+      <a href="mailto:wenxiao1013@gmail.com">wenxiao1013@gmail.com</a><br>
+      Beijing → Singapore<br>
+      Last updated · Jun 2026
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+
+    <!-- Hero -->
+    <header class="hero" id="about">
+      <div class="mark" aria-hidden="true">雯</div>
+      <div class="text">
+        <p class="eyebrow">Investment Research · AI &amp; Organizations</p>
+        <h1>Reading markets like a scholar, <em>reading research like an investor.</em></h1>
+        <p class="tagline">Investment researcher and aspiring organizational scholar working where AI meets people, firms, and capital.</p>
+        <p class="intro">
+          I'm Catrina — a finance graduate of Renmin University of China heading to the National
+          University of Singapore for an MSc in Business Analytics. I've sourced and analyzed AI
+          startups at MiraclePlus (YC China) and Kylinhall Partners, priced bonds at BOC
+          International, and co-authored research on human–AI collaboration targeting top
+          management journals. I like questions that sit between disciplines: how AI changes the
+          way organizations evaluate people, and how technology shifts where value accrues in markets.
+        </p>
+        <div class="links">
+          <a href="mailto:wenxiao1013@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/catrina-wen-xiao" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#" title="Add your GitHub URL">GitHub</a>
+          <a href="#research">Working Papers ↓</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <img src="profile.jpg" alt="Portrait of Xiao (Catrina) Wen" width="720" height="900">
+      </div>
+    </header>
+
+    <!-- Education -->
+    <section id="education" class="reveal">
+      <div class="sec-head"><h2>Education</h2><span class="zh">教育背景</span></div>
+
+      <div class="entry">
+        <div class="when">2026 — 2027<span class="loc">Singapore</span></div>
+        <div>
+          <h3>National University of Singapore</h3>
+          <p class="role">MSc in Business Analytics (MSBA)</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when">2022 — 2026<span class="loc">Beijing</span></div>
+        <div>
+          <h3>Renmin University of China</h3>
+          <p class="role">BA in Finance · Dual Degree in Management · Minor in English</p>
+          <p class="sub">GPA: A−</p>
+          <ul>
+            <li>President's Scholarship (¥40,000), 2026</li>
+            <li>Co-founded the RUC Entrepreneurship Association: 100+ members, 12+ guest entrepreneurs, 5 teams incubated with ¥250k+ initial funding secured</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when">Sep 2025 — Jan 2026<span class="loc">California</span></div>
+        <div>
+          <h3>University of California, Davis</h3>
+          <p class="role">Exchange Program · Data Analytics</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="reveal">
+      <div class="sec-head"><h2>Experience</h2><span class="zh">工作经历</span></div>
+
+      <div class="entry">
+        <div class="when">Feb 2026 — Present<span class="loc">Beijing</span></div>
+        <div>
+          <h3>Kylinhall Partners</h3>
+          <p class="role">Investment Analysis Intern — AIGC Research</p>
+          <ul>
+            <li>Produced 5 in-depth AIGC research reports — all accredited by the CEO — identifying key technological breakthroughs and application scenarios across embodied AI, world models, and AI infrastructure</li>
+            <li>Built quantitative analysis models on large datasets; research provided 2 decision-making bases for governmental policy formulation and supported an HKU program-team milestone</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when">Dec 2024 — Mar 2025<span class="loc">Beijing</span></div>
+        <div>
+          <h3>MiraclePlus (YC China)</h3>
+          <p class="role">Investment Analysis Intern — AI Startups</p>
+          <ul>
+            <li>Mapped the Asian AI application landscape across enterprise SaaS, vertical AI, and agent-based products; wrote screening memos and investment theses for partner discussion</li>
+            <li>Sourced early-stage companies through founder networks, databases, and ecosystem mapping; translated technical products into business and market insight</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when">Apr — Sep 2024<span class="loc">Beijing</span></div>
+        <div>
+          <h3>BOC International (China)</h3>
+          <p class="role">Bond Issuance Intern</p>
+          <ul>
+            <li>Supported the successful registration of a record-setting ¥40bn regional bond — the region's inaugural issuance — and the preliminary work of a central-SOE sci-tech innovation bond IPO</li>
+            <li>Contributed to 10 bond projects and 12+ key reports; ran 20 scenario-based analyses on profitability and debt-servicing risk to inform bond pricing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when">Jan — Feb 2024<span class="loc">Qinghai</span></div>
+        <div>
+          <h3>People's Bank of China</h3>
+          <p class="role">Monetary &amp; Credit Department Intern</p>
+          <ul>
+            <li>Core writer of 7 key reports on real estate, inclusive microfinance, and sci-tech finance; several proposals were adopted into actual policy formulation and adjustment</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research" class="reveal">
+      <div class="sec-head"><h2>Research</h2><span class="zh">研究成果</span></div>
+
+      <div class="paper">
+        <span class="status">Working Paper · Target: AMJ</span>
+        <h3>Why work-goal progress in human–AI collaboration may harm employee task performance: The mediating role of AI attribution and the moderating role of leader recognition</h3>
+        <p class="meta">Xiao, W. &amp; Liu, X. — in preparation</p>
+        <p class="desc">Two-wave employee–supervisor matched field survey at an engineering consulting firm. I designed and administered the survey, managed dyadic data collection and matching, ran multilevel path analysis, CFA, and moderated mediation in Mplus with Monte Carlo simulation in R, and drafted the full manuscript.</p>
+      </div>
+
+      <div class="paper">
+        <span class="status">Under Review · SIGGRAPH Asia 2026</span>
+        <h3>A paper on photorealistic video generation</h3>
+        <p class="meta">Under double-anonymous review — title and details withheld until decision</p>
+        <p class="desc">Co-developed a generative video framework built on diffusion transformer (DiT) architectures and vision-language models, contributing to its guidance and positional-encoding design. Full details available after the review concludes.</p>
+      </div>
+
+      <div class="paper">
+        <span class="status">In Progress · Solo-Authored · Target: JAP / OBHDP</span>
+        <h3>The Ability Penalty: How organizational AI adoption amplifies evaluation disparities between high- and low-performing employees</h3>
+        <p class="meta">Full theoretical development, experimental design, and manuscript preparation</p>
+        <p class="desc">Does the mere presence of AI bias managers against low-ability employees even when objective output is held constant? Integrates attribution theory, reference-point shift, and task substitutability; three pre-registered Prolific experiments testing main effects, perceived substitutability as mediator, and task type as boundary condition.</p>
+      </div>
+
+      <div class="paper">
+        <span class="status">Published · CPCI</span>
+        <h3>The impact of labor investment efficiency on investor attention</h3>
+        <p class="meta">Joint first author · Highlights in Business, Economics and Management, 12, 165–172</p>
+        <p class="desc">Panel moderation models on 10,743 firm-year observations (CSMAR/Wind) examining how labor investment efficiency shapes investor attention, with stock return as moderator.</p>
+      </div>
+
+      <div class="entry" style="border-top:none;padding-top:28px;">
+        <div class="when">Oct 2024 — Present<span class="loc">Beijing</span></div>
+        <div>
+          <h3>Research Assistant to Prof. Xin Liu</h3>
+          <p class="sub">RUC School of Business · Human–AI Collaboration &amp; Attribution Theory</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="reveal">
+      <div class="sec-head"><h2>Projects</h2><span class="zh">项目</span></div>
+      <div class="grid2">
+        <div class="card">
+          <p class="tag">AI Tooling · Venture Research</p>
+          <h3>VC Research Automation System</h3>
+          <p>A three-skill agentic workflow (/onepager, /vc-search, /vc-research) that automates company one-pagers, landscape scans, and investment-grade research reports; presented internally at Kylinhall Partners.</p>
+        </div>
+        <div class="card">
+          <p class="tag">Developer Tools</p>
+          <h3>PaperMind — VSCode Plugin</h3>
+          <p>A VSCode extension for academic paper reading and note-taking, with iterative UI design from icon to interaction flow.</p>
+        </div>
+        <div class="card">
+          <p class="tag">Causal Inference</p>
+          <h3>Crowdfunding Incentive Design</h3>
+          <p>Estimated the causal effect of lottery incentives on crowdfunding outcomes using propensity score matching and OLS on platform data.</p>
+        </div>
+        <div class="card">
+          <p class="tag">Optimization · ML</p>
+          <h3>Drone Delivery Route Planning</h3>
+          <p>Multi-objective route optimization with NSGA-II, including uncertainty analysis over demand and flight conditions.</p>
+        </div>
+        <div class="card">
+          <p class="tag">Mathematical Modeling</p>
+          <h3>MCM/ICM — Meritorious Winner</h3>
+          <p>Team captain, modeller, and thesis writer. Cleaned 5,000+ data items across five domains, built predictive models in Python validated with ANOVA at 92% accuracy; top 7–12% of teams worldwide.</p>
+        </div>
+        <div class="card">
+          <p class="tag">Composite Index</p>
+          <h3>Light Pollution Risk Indicator</h3>
+          <p>AHP-based composite index for regional light-pollution risk assessment, developed for MCM/ICM 2023.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills & Honors -->
+    <section id="skills" class="reveal">
+      <div class="sec-head"><h2>Skills &amp; Honors</h2><span class="zh">技能与荣誉</span></div>
+
+      <dl class="skills">
+        <dt>Research Methods</dt>
+        <dd>Multi-wave survey design · experimental design · panel data analysis · causal inference · moderated mediation</dd>
+        <dt>Software</dt>
+        <dd>Python · R · Stata · Mplus · SPSS · SQL (MySQL / MongoDB) · LaTeX</dd>
+        <dt>Data Platforms</dt>
+        <dd>Wind · CSMAR</dd>
+        <dt>Languages</dt>
+        <dd>Mandarin (native) · English (fluent, IELTS 7.0)</dd>
+        <dt>Certificates</dt>
+        <dd>ACCA (5/13 papers)</dd>
+      </dl>
+
+      <ul class="honors" style="margin-top:36px;">
+        <li><span>President's Scholarship (¥40,000), Renmin University of China</span><span class="yr">2026</span></li>
+        <li><span>Meritorious Winner, MCM/ICM (top 7–12% worldwide)</span><span class="yr">2024</span></li>
+        <li><span>Provincial Second Prize, China Undergraduate Mathematical Contest in Modeling</span><span class="yr">2024</span></li>
+        <li><span>Outstanding Group Member, Renmin University of China</span><span class="yr">2024</span></li>
+      </ul>
+    </section>
+
+    <footer class="colophon">
+      <span>© 2026 Xiao (Catrina) Wen</span>
+      <span>北京 · 香港 · 新加坡</span>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // gentle scroll reveal, respects reduced motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sections = document.querySelectorAll('.reveal');
+  if (prefersReduced) {
+    sections.forEach(s => s.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    sections.forEach(s => io.observe(s));
+  }
+</script>
+</body>
+</html>
